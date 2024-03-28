@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "flake8-allowlist-imports"
-version = "0.1.0"
+version = "0.1.1"
 description = "flake8 plugin to allowlist imports"
 readme = "README.md"
 license = {file = "LICENSE"}
