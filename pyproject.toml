@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flake8-allowlist-imports"
+version = "0.1.0"
+description = "flake8 plugin to allowlist imports"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.9"
+authors = [
+    { name = "Felix Scherz", email = "felixwscherz@gmail.com" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+    "flake8>=3.8",
+    "classify-imports>=4.0",
+    "importlib-metadata; python_version<\"3.10\"",
+]
+
+[project.entry-points."flake8.extension"]
+FAI = "flake8_allowlist_imports:Plugin"
+
+[project.urls]
+issues = "https://github.com/felixwscherz/flake8-allowlist-imports/issues"
+repository = "https://github.com/felixscherz/flake8-allowlist-imports"
