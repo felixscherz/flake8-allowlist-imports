@@ -2,6 +2,7 @@ import ast
 import importlib.metadata
 import re
 from typing import Any
+import sys
 from typing import Generator
 from typing import Type
 
@@ -19,12 +20,18 @@ class Visitor(ast.NodeVisitor):
         self.patterns = [re.compile(p) for p in allowlist]
 
     def is_allowed(self, name: str) -> bool:
-        return any((p.match(name) for p in self.patterns)) or classify_base(name) != "THIRD_PARTY"
+        return (
+            any((p.match(name) for p in self.patterns))
+            or classify_base(name) != "THIRD_PARTY"
+        )
 
     def visit_Import(self, node: ast.Import) -> None:
         for alias in node.names:
             if not self.is_allowed(alias.name):
-                self.problems.append((alias.lineno, alias.col_offset, alias.name))
+                if sys.version_info.minor > 9:
+                    self.problems.append((alias.lineno, alias.col_offset, alias.name))
+                else:
+                    self.problems.append((node.lineno, node.col_offset, alias.name))
         self.generic_visit(node)
 
 
