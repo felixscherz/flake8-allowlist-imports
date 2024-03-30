@@ -52,7 +52,7 @@ def create_release_branch(repo: Repo, version: Version) -> tuple[Remote, Head]:
 
 def get_upstream(repo: Repo) -> Remote:
     for remote in repo.remotes:
-        if any(url.endswith("felixscherz/flake8-allowlist-imports.git") for url in remote.urls):
+        if any(url.endswith("felixscherz/flake8-allowlist-imports") for url in remote.urls):
             return remote
     msg = "could not find felixscherz/flake8-allowlist-imports.git remote"
     raise RuntimeError(msg)
