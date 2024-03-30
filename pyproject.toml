@@ -30,3 +30,9 @@ FAI = "flake8_allowlist_imports:Plugin"
 [project.urls]
 issues = "https://github.com/felixwscherz/flake8-allowlist-imports/issues"
 repository = "https://github.com/felixscherz/flake8-allowlist-imports"
+
+[tool.towncrier]
+name = "flake8-allowlist-imports"
+package = "flake8_allowlist_imports"
+directory = "changes"
+filename = "CHANGELOG.md"
