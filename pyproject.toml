@@ -39,3 +39,5 @@ name = "flake8-allowlist-imports"
 package = "flake8_allowlist_imports"
 directory = "changes"
 filename = "CHANGELOG.md"
+
+[tool.setuptools_scm]
